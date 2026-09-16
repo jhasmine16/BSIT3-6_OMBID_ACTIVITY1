@@ -22,13 +22,11 @@ app.post('/register', (req, res) => {
         const course        = req.body.course || '';
         const hobbies       = req.body.hobbies || '';
         
-        // Extracted emergency contact number
         const emergency_num = req.body.emergency_num || req.body.emergencynum || '';
         
         const parsedYear    = parseInt(String(req.body.year_level || req.body.yearlevel || ''), 10);
         const year_level    = isNaN(parsedYear) ? 1 : parsedYear;
         
-        // Updated INSERT query with emergency_num column and placeholder
         const insert = `
             INSERT INTO profiles 
             (full_name, age, gender, birthdate, address, contact_num, email, course, year_level, hobbies, emergency_num) 
