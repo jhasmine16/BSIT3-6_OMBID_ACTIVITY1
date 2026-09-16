@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registered Profiles</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: rgb(241, 241, 238);
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            color: rgb(8, 8, 7);
+        }
+
+        table {
+            width: 95%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #a9a997;
+            color: rgb(8, 8, 7);
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        .btn-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: rgb(223, 244, 106);
+            color: #333;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background: #cdcbce;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Registered Profiles</h1>
+
+    <div class="btn-container">
+        <a href="/" class="btn">+ Add New Profile</a>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Full Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Birthdate</th>
+                <th>Address</th>
+                <th>Contact Number</th>
+                <th>Email</th>
+                <th>Course</th>
+                <th>Year</th>
+                <th>Hobbies</th>
+                <th>Emergency Number</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if (profiles.length === 0) { %>
+                <tr>
+                    <td colspan="12" style="text-align:center;">No profiles found.</td>
+                </tr>
+            <% } else { %>
+                <% profiles.forEach(profile => { %>
+                    <tr>
+                        <td><%= profile.id %></td>
+                        <td><%= profile.full_name %></td>
+                        <td><%= profile.age %></td>
+                        <td><%= profile.gender %></td>
+                        <td><%= profile.birthdate ? new Date(profile.birthdate).toISOString().split('T')[0] : '' %></td>
+                        <td><%= profile.address %></td>
+                        <td><%= profile.contact_num %></td>
+                        <td><%= profile.email %></td>
+                        <td><%= profile.course %></td>
+                        <td><%= profile.year_level %></td>
+                        <td><%= profile.hobbies %></td>
+                        <td><%= profile.emergency_num %></td>
+                    </tr>
+                <% }); %>
+            <% } %>
+        </tbody>
+    </table>
+
+</body>
+</html>
